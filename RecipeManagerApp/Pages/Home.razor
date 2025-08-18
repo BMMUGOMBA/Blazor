@@ -1,0 +1,22 @@
+﻿@page "/home"
+@code {
+    private List<Recipe> recipes = new()
+        {
+            new Recipe {Id = 1, Name = "Spaghetti Bolognese", Description = "A classic Italian pasta dish."},
+            new Recipe {Id = 2, Name = "Chicken Curry", Description = "A spicy and flavorful chicken dish."},
+        };
+
+}
+
+<h3>Recipe List</h3>
+<ul>
+    @foreach (var recipe in recipes)
+    {
+        <li>
+            <strong>@recipe.Name</strong> - @recipe.Description
+            <br/>
+            <NavLinnk href="@($"/recipe/{recipe.Id}")" Match="NavLinkMatch.All">View Details</NavLinnk>
+        </li>
+    }
+</ul>
+<NavLinnk href="/add-recipe">Add New Recipe</NavLinnk>
